@@ -60,7 +60,7 @@
             <!-- /tags -->
 
             <!-- always handy to have 'Edit' links available -->
-            <?php edit_post_link(); ?>
+            <?php edit_post_link(__('Edit this', 'hvitur'), '<p>', '</p>'); ?>
             <!-- /always handy to have 'Edit' links available -->
 
             <!-- show prev/next if page/post is splittet in several pages -->
