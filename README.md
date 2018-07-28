@@ -1,8 +1,5 @@
 # Hvítur
 
-A white, Bootstrap-powered, responsive WordPress theme
-
-
 ![screenshot](screenshot.png "preview")
 
 
