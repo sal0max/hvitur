@@ -1,17 +1,18 @@
-<!--
-   Single post or single page
--->
+<?php
+/**
+ * The template for displaying all single posts and pages
+ *
+ * If posts and pages use the same template, singular.php can be used.
+ * This template is ignored if single.php and/or page.php is present.
+ */
 
-<?php get_header(); ?>
-<?php get_template_part('partials/container'); ?>
+get_header();
+get_template_part('partials/container'); ?>
 
-   <main role="main">
-      <!-- section -->
-      <section>
-
-         <?php if (have_posts()): while (have_posts()) : the_post(); ?>
-         <!-- article -->
-         <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+   <?php if (have_posts()): ?>
+      <?php while (have_posts()): the_post(); ?>
+         <!-- main -->
+         <main id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
             <!-- title -->
             <h1 class="page-title display-6"><?php the_title(); ?></h1>
@@ -19,7 +20,7 @@
             <!-- / title -->
 
             <!-- thumbnail -->
-            <?php if (has_post_thumbnail()) : ?>
+            <?php if (has_post_thumbnail()): ?>
             <p>
                <?php the_post_thumbnail('', array('class' => 'img-fluid')); ?>
             </p>
@@ -27,7 +28,7 @@
             <!-- /thumbnail -->
 
             <!-- details (ONLY ON POST) -->
-            <?php if (get_post_type(get_the_ID()) == 'post') : ?>
+            <?php if (get_post_type(get_the_ID()) == 'post'): ?>
             <p class="text-muted text-right">
                <!-- date -->
                <small>
@@ -35,7 +36,7 @@
                </small>
                <!-- /date -->
                <!-- category -->
-               <?php if (has_category()) : ?>
+               <?php if (has_category()): ?>
                <small>
                   &emsp;&middot;&emsp;<?php the_category(', '); ?>
                </small>
@@ -50,7 +51,7 @@
             <!-- /content -->
 
             <!-- tags -->
-            <?php if (has_tag()) : ?>
+            <?php if (has_tag()): ?>
             <p class="text-right text-muted">
                <small>Tags&ensp;:&ensp;</small>
                <?php the_tags('<small>', '&ensp;&middot;&ensp;', '</small>');
@@ -59,9 +60,11 @@
             <?php endif; ?>
             <!-- /tags -->
 
-            <!-- always handy to have 'Edit' links available -->
-            <?php edit_post_link(__('Edit this', 'hvitur'), '<p>', '</p>'); ?>
-            <!-- /always handy to have 'Edit' links available -->
+            <!-- edit -->
+            <?php if (get_edit_post_link()): ?>
+            <p><?php edit_post_link(); ?></p>
+            <?php endif; ?>
+            <!-- /edit -->
 
             <!-- show prev/next if page/post is splittet in several pages -->
             <?php wp_link_pages( array(
@@ -72,14 +75,11 @@
                'previouspagelink' => __('Previous', 'hvitur'))); ?>
             <!-- /show prev/next if page/post is splittet in several pages -->
 
-         </article>
-         <!-- /article -->
-         <?php endwhile; ?>
-         <?php endif; ?>
+         </main>
+         <!-- /main -->
+       <?php endwhile; ?>
+   <?php endif; ?>
 
-      </section>
-      <!-- /section -->
-   </main>
-
-<?php get_sidebar(); ?>
-<?php get_footer(); ?>
+<?php
+get_sidebar();
+get_footer(); ?>

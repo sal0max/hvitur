@@ -192,7 +192,7 @@ function overwrite_excerpt_more($more) {
    return sprintf(
       '&hellip;<br><div class="pt-2"><a href="%1$s">%2$s</a></div>',
       get_the_permalink(),
-      __( 'Read More', 'hvitur' )
+      __('Read More', 'hvitur')
    );
 }
 
@@ -411,6 +411,16 @@ function whats_my_age_again($birthday) {
 }
 
 /**
+ * Default edit post link:
+ * Open in new page and display in red. Also provides translation.
+ */
+function my_edit_post_link($link, $post_id, $text) {
+   $url = get_edit_post_link($post_id);
+   $text = __('Edit this' , 'hvitur');
+   return '<a href="' . $url . '" target="_blank" class="text-danger">' . $text . '</a>';
+}
+
+/**
  * Custom comments callback
  */
 function hvitur_comments($comment, $args, $depth) {
@@ -493,6 +503,7 @@ remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
 // Filters
 add_filter('avatar_defaults', 'hvitur_gravatar'); // custom gravatar in settings > discussion
 add_filter('body_class', 'add_slug_to_body_class'); // add slug to body class (starkers build)
+add_filter('edit_post_link', 'my_edit_post_link', 10, 3);
 add_filter('excerpt_length', 'overwrite_excerpt_length');
 add_filter('excerpt_more', 'overwrite_excerpt_more');
 add_filter('image_send_to_editor', 'remove_thumbnail_dimensions', 10); // remove width and height dynamic attributes to post images
