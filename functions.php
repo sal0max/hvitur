@@ -468,54 +468,54 @@ function hvitur_comments($comment, $args, $depth) {
   Actions + Filters + ShortCodes
 \*------------------------------------*/
 
-// Actions
-add_action('init', 'hvitur_header_scripts'); // Add Custom Scripts to wp_head
-add_action('wp_print_scripts', 'hvitur_conditional_scripts'); // Add Conditional Page Scripts
-add_action('get_header', 'enable_threaded_comments'); // Enable Threaded Comments
-add_action('wp_enqueue_scripts', 'hvitur_styles'); // Add (Theme) Stylesheet
-add_action('init', 'register_hvitur_menu'); // Add Hvítur Menu
-add_action('widgets_init', 'my_remove_recent_comments_style'); // Remove inline Recent Comment Styles from wp_head()
-add_action('init', 'hvitur_pagination'); // Add our Hvítur Pagination
+// actions
+add_action('get_header', 'enable_threaded_comments'); // enable threaded comments
 add_action('init', 'hvitur_galleries_to_carousel');
-remove_action('wp_head', 'feed_links_extra', 3); // Display the links to the extra feeds such as category feeds
-remove_action('wp_head', 'feed_links', 2); // Display the links to the general feeds: Post and Comment Feed
-remove_action('wp_head', 'rsd_link'); // Display the link to the Really Simple Discovery service endpoint, EditURI link
-remove_action('wp_head', 'wlwmanifest_link'); // Display the link to the Windows Live Writer manifest file.
-remove_action('wp_head', 'index_rel_link'); // Index link
-remove_action('wp_head', 'parent_post_rel_link', 10, 0); // Prev link
-remove_action('wp_head', 'start_post_rel_link', 10, 0); // Start link
-remove_action('wp_head', 'adjacent_posts_rel_link', 10, 0); // Display relational links for the posts adjacent to the current post.
-remove_action('wp_head', 'wp_generator'); // Display the XHTML generator that is generated on the wp_head hook, WP version
+add_action('init', 'hvitur_header_scripts'); // add custom scripts to wp_head
+add_action('init', 'hvitur_pagination'); // add our hvitur pagination
+add_action('init', 'register_hvitur_menu'); // add hvitur menu
+add_action('widgets_init', 'my_remove_recent_comments_style'); // remove inline "recent comment" styles from wp_head()
+add_action('wp_enqueue_scripts', 'hvitur_styles'); // add (theme) stylesheet
+add_action('wp_print_scripts', 'hvitur_conditional_scripts'); // add conditional page scripts
+remove_action('wp_head', 'adjacent_posts_rel_link', 10, 0); // display relational links for the posts adjacent to the current post.
 remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
+remove_action('wp_head', 'feed_links', 2); // display the links to the general feeds: post and comment feed
+remove_action('wp_head', 'feed_links_extra', 3); // display the links to the extra feeds such as category feeds
+remove_action('wp_head', 'index_rel_link'); // index link
+remove_action('wp_head', 'parent_post_rel_link', 10, 0); // prev link
 remove_action('wp_head', 'rel_canonical');
+remove_action('wp_head', 'rsd_link'); // display the link to the really simple discovery service endpoint, edituri link
+remove_action('wp_head', 'start_post_rel_link', 10, 0); // start link
+remove_action('wp_head', 'wlwmanifest_link'); // display the link to the windows live writer manifest file.
+remove_action('wp_head', 'wp_generator'); // display the xhtml generator that is generated on the wp_head hook, wp version
 remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
 
 // Filters
-add_filter('avatar_defaults', 'hvitur_gravatar'); // Custom Gravatar in Settings > Discussion
-add_filter('body_class', 'add_slug_to_body_class'); // Add slug to body class (Starkers build)
-add_filter('widget_text', 'do_shortcode'); // Allow shortcodes in Dynamic Sidebar
-add_filter('widget_text', 'shortcode_unautop'); // Remove <p> tags in Dynamic Sidebars (better!)
-add_filter('wp_nav_menu_args', 'my_wp_nav_menu_args'); // Remove surrounding <div> from WP Navigation
-add_filter('the_category', 'remove_category_rel_from_category_list'); // Remove invalid rel attribute
-add_filter('the_excerpt', 'shortcode_unautop'); // Remove auto <p> tags in Excerpt (Manual Excerpts only)
-add_filter('the_excerpt', 'do_shortcode'); // Allows Shortcodes to be executed in Excerpt (Manual Excerpts only)
-add_filter('style_loader_tag', 'html5_style_remove'); // Remove 'text/css' from enqueued stylesheet
-add_filter('post_thumbnail_html', 'remove_thumbnail_dimensions', 10); // Remove width and height dynamic attributes to thumbnails
-add_filter('image_send_to_editor', 'remove_thumbnail_dimensions', 10); // Remove width and height dynamic attributes to post images
-add_filter('show_admin_bar', 'overwrite_show_admin_bar');
+add_filter('avatar_defaults', 'hvitur_gravatar'); // custom gravatar in settings > discussion
+add_filter('body_class', 'add_slug_to_body_class'); // add slug to body class (starkers build)
 add_filter('excerpt_length', 'overwrite_excerpt_length');
 add_filter('excerpt_more', 'overwrite_excerpt_more');
-add_filter('wp_link_pages_link', 'hvitur_link_pages_link', 10, 2);
+add_filter('image_send_to_editor', 'remove_thumbnail_dimensions', 10); // remove width and height dynamic attributes to post images
+add_filter('post_thumbnail_html', 'remove_thumbnail_dimensions', 10); // remove width and height dynamic attributes to thumbnails
+add_filter('show_admin_bar', 'overwrite_show_admin_bar');
+add_filter('style_loader_tag', 'html5_style_remove'); // remove 'text/css' from enqueued stylesheet
+add_filter('the_category', 'remove_category_rel_from_category_list'); // remove invalid rel attribute
+add_filter('the_excerpt', 'do_shortcode'); // allows shortcodes to be executed in excerpt (manual excerpts only)
+add_filter('the_excerpt', 'shortcode_unautop'); // remove auto <p> tags in excerpt (manual excerpts only)
+add_filter('widget_text', 'do_shortcode'); // allow shortcodes in dynamic sidebar
+add_filter('widget_text', 'shortcode_unautop'); // remove <p> tags in dynamic sidebars (better!)
 add_filter('wp_link_pages_args', 'hvitur_add_next_and_number');
-remove_filter('the_content', 'wpautop'); // Remove <p> tags from Excerpt pages
-remove_filter('the_excerpt', 'wpautop'); // Remove <p> tags from Excerpt
+add_filter('wp_link_pages_link', 'hvitur_link_pages_link', 10, 2);
+add_filter('wp_nav_menu_args', 'my_wp_nav_menu_args'); // remove surrounding <div> from wp navigation
+remove_filter('the_content', 'wpautop'); // remove <p> tags from excerpt pages
+remove_filter('the_excerpt', 'wpautop'); // remove <p> tags from excerpt
 
 // Shortcodes
 add_shortcode('email', 'hide_email_shortcode');
 add_shortcode('email2', 'hide_email_shortcode2');
 add_shortcode('yearsSince', 'whats_my_age_again');
 
-// Register Custom Navigation Walkers
+// Register custom navigation walkers
 require_once ('functions/bs4navwalker.php');
 require_once ('functions/inlinelistwalker.php');
 
