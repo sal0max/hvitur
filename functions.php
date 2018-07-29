@@ -363,7 +363,7 @@ function galleries_to_carousel() {
       $url = get_edit_post_link($post_id);
       $text = __('Edit this' , 'hvitur');
       $carousel .= '<a href="'. $url . '"
-         target="_blank" class="btn btn-sm btn-danger"
+         target="_blank" class="btn btn-sm btn-outline-light"
          style="position: absolute; top: 12px; right: 8px; z-index=100">' . $text . '</a>';
    }
 
