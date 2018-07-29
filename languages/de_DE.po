@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2018-04-15 21:37+0200\n"
-"PO-Revision-Date: 2018-04-15 21:38+0200\n"
+"POT-Creation-Date: 2018-07-29 14:32+0200\n"
+"PO-Revision-Date: 2018-07-29 14:32+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.1.1\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-KeywordsList: __;_e\n"
@@ -23,54 +23,64 @@ msgstr "Seite nicht gefunden"
 msgid "Go home"
 msgstr "Zurück zur Startseite"
 
-#: _for.later/author.php:35
+#: _todo/author.php:36
 msgid "Leave your thoughts"
 msgstr ""
 
-#: _for.later/author.php:35
+#: _todo/author.php:36
 msgid "1 Comment"
 msgstr "1 Kommentar"
 
-#: _for.later/author.php:35
+#: _todo/author.php:36
 msgid "% Comments"
 msgstr "% Kommentare"
 
-#: _for.later/search.php:7
+#: _todo/search.php:6
 #, php-format
 msgid "%s Search Results for "
 msgstr "%s Suchergebnisse für "
 
-#: functions.php:148
-msgid "Widget Area 1"
-msgstr ""
+#: functions.php:195
+#| msgid "read more"
+msgid "Read More"
+msgstr "Weiterlesen"
 
-#: functions.php:149 functions.php:160
-msgid "Description for this widget-area..."
-msgstr ""
-
-#: functions.php:159
-msgid "Widget Area 2"
-msgstr ""
-
-#: functions.php:313
+#: functions.php:437
 #, php-format
 msgid "<cite class=\"fn\">%s</cite> <span class=\"says\">says:</span>"
 msgstr "<cite class=„fn“>%s</cite> <span class=„says“>sagt:</span>"
 
-#: functions.php:322
+#: functions.php:447
 #, php-format
 msgid "%1$s at %2$s"
 msgstr "%1$s um %2$s"
 
-#: functions.php:322
+#: functions.php:447
 msgid "(Edit)"
 msgstr "(Bearbeiten)"
+
+#: functions.php:526
+msgid "Widget Area 1"
+msgstr ""
+
+#: functions.php:527 functions.php:538
+msgid "Description for this widget-area..."
+msgstr ""
+
+#: functions.php:537
+msgid "Widget Area 2"
+msgstr ""
 
 #: header.php:59
 msgid "Admin Area"
 msgstr "Admin-Bereich"
 
-#: partials/loop.php:37
+#: index.php:8
+#, php-format
+msgid "Everything about %s"
+msgstr ""
+
+#: partials/loop.php:37 singular.php:63
 msgid "Edit this"
 msgstr "Bearbeiten"
 
