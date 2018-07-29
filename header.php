@@ -37,8 +37,8 @@
                   'menu_id'           => false,
                   'menu_class'        => 'navbar-nav mr-auto',
                   'fallback_cb'       => 'bs4navwalker::fallback',
-                  'walker'            => new bs4navwalker())
-               );
+                  'walker'            => new bs4navwalker()
+               ));
             ?>
             <!-- /left main menu -->
             <!-- right main menu -->
@@ -48,8 +48,8 @@
                   'depth'             => 2,
                   'container'         => false,
                   'menu_class'        => 'navbar-nav',
-                  'walker'            => new bs4navwalker())
-               );
+                  'walker'            => new bs4navwalker()
+               ));
             ?>
             <!-- /right main menu -->
             <!-- link to admin page if logged in -->
