@@ -29,7 +29,6 @@ h1, h2, h3, h4, h5, h6 {
 
 /* sticky footer at bottom of page */
 .footer {
-  background-color: transparent;
   bottom: 0;
   height: 4.5rem;
   position: absolute;
@@ -49,3 +48,9 @@ h1, h2, h3, h4, h5, h6 {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+/*
+.carousel-indicators {
+    top: 20px; /* move indicators to the top *
+}
+*/

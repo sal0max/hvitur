@@ -8,8 +8,8 @@
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  */
 
-class inlinelistwalker extends Walker_Nav_Menu
-{
+class inlinelistwalker extends Walker_Nav_Menu {
+
    /**
     * Start the element output.
     *
@@ -33,11 +33,15 @@ class inlinelistwalker extends Walker_Nav_Menu
       $output .= $indent . '<li id="nav-menu-item-'. $item->ID . '" class="' . $class_name . '">';
 
       // Link attributes.
-      $attributes  = ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
-      $attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
-      $attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
-      $attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
-      $attributes .= ' class="menu-link text-secondary ' . ( $depth > 0 ? 'sub-menu-link' : 'main-menu-link' ) . '"';
+      $attributes  = !empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
+      $attributes .= !empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
+      $attributes .= !empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
+      $attributes .= !empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
+      $attributes .= ' class="'
+         . 'menu-link'
+         . ( is_front_page() ? ' text-light' : ' text-secondary' )
+         . ( $depth > 0 ? ' sub-menu-link' : ' main-menu-link' )
+         . '"';
 
       // Build HTML output and pass through the proper filter.
       $item_output = sprintf( '%1$s<a%2$s>%3$s%4$s%5$s</a>%6$s',

@@ -337,16 +337,16 @@ function galleries_to_carousel() {
    $carousel .= '</div>';
 
    // indicators
-   $carousel .= '<ol class="carousel-indicators">';
-   for ($i = 0;$i < sizeof($images);$i++) {
-      if ($i == 0) {
-         $carousel .= '<li data-target="#carousel" data-slide-to="0" class="active"></li>';
-      }
-      else {
-         $carousel .= '<li data-target="#carousel" data-slide-to="' . $i . '"></li>';
-      }
-   }
-   $carousel .= '</ol>';
+   //   $carousel .= '<ol class="carousel-indicators">';
+   //   for ($i = 0;$i < sizeof($images);$i++) {
+   //      if ($i == 0) {
+   //         $carousel .= '<li data-target="#carousel" data-slide-to="0" class="active"></li>';
+   //      }
+   //      else {
+   //         $carousel .= '<li data-target="#carousel" data-slide-to="' . $i . '"></li>';
+   //      }
+   //   }
+   //   $carousel .= '</ol>';
 
    // controlers
    $carousel .= '<a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">';
