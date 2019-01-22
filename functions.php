@@ -59,10 +59,6 @@ if (function_exists('add_theme_support')) {
  */
 function hvitur_header_scripts() {
    if ($GLOBALS['pagenow'] != 'wp-login.php' && !is_admin()) {
-      // conditionizr & modernizr
-      // wp_enqueue_script('conditionizr', get_template_directory_uri() . '/js/lib/conditionizr-4.4.0.min.js', array(), '4.3.0');
-      // wp_enqueue_script('modernizr', 'https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js');
-
       // prism.js (CDN)
       wp_enqueue_script('prism_js', 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.13.0/prism.min.js');
       wp_enqueue_script('prism_js-java', 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.13.0/components/prism-java.min.js');
