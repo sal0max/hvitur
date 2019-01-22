@@ -296,7 +296,7 @@ function enable_threaded_comments() {
 /**
  * Gets all images of all galleries and puts them together in one single bootstrap (v4) carousel
  */
-function galleries_to_carousel() {
+function hvitur_galleries_to_carousel() {
    global $post;
 
    // only do this on singular items
@@ -496,7 +496,6 @@ add_action('init', 'hvitur_pagination'); // add our hvitur pagination
 add_action('init', 'register_hvitur_menu'); // add hvitur menu
 add_action('widgets_init', 'my_remove_recent_comments_style'); // remove inline "recent comment" styles from wp_head()
 add_action('wp_enqueue_scripts', 'hvitur_styles'); // add (theme) stylesheet
-add_action('wp_print_scripts', 'hvitur_conditional_scripts'); // add conditional page scripts
 remove_action('wp_head', 'adjacent_posts_rel_link', 10, 0); // display relational links for the posts adjacent to the current post.
 remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
 remove_action('wp_head', 'feed_links', 2); // display the links to the general feeds: post and comment feed
