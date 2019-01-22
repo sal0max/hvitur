@@ -183,14 +183,23 @@ function overwrite_excerpt_length($length) {
 }
 
 /**
- * Changing excerpt "more"
+ * Changing text "more" of generated excerpts
  */
 function overwrite_excerpt_more($more) {
-   return sprintf(
-      '&hellip;<br><div class="pt-2"><a href="%1$s">%2$s</a></div>',
+   return "&hellip;";
+}
+
+/**
+ * Add text "more" to all excerpts (generated and custom ones)
+ */
+function overwrite_the_excerpt( $excerpt ){
+   $post = get_post();
+   $excerpt .= sprintf(
+      '<span class="font-weight-light"><br><a href="%1$s">%2$s &#8594;</a></span>',
       get_the_permalink(),
       __('Read More', 'hvitur')
    );
+   return $excerpt;
 }
 
 /**
@@ -500,6 +509,7 @@ add_filter('body_class', 'add_slug_to_body_class'); // add slug to body class (s
 add_filter('edit_post_link', 'my_edit_post_link', 10, 3);
 add_filter('excerpt_length', 'overwrite_excerpt_length');
 add_filter('excerpt_more', 'overwrite_excerpt_more');
+add_filter('the_excerpt', 'overwrite_the_excerpt');
 add_filter('image_send_to_editor', 'remove_thumbnail_dimensions', 10); // remove width and height dynamic attributes to post images
 add_filter('post_thumbnail_html', 'remove_thumbnail_dimensions', 10); // remove width and height dynamic attributes to thumbnails
 add_filter('show_admin_bar', 'overwrite_show_admin_bar');
