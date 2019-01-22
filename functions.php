@@ -309,10 +309,10 @@ function hvitur_galleries_to_carousel() {
       }
    }
 
-   $carousel = '<div class="carousel slide carousel-fade" id="carousel" data-ride="carousel">';
+   $carousel = '<div class="carousel slide carousel-fade" id="carousel" data-ride="carousel>';
 
    // image slides
-   $carousel .= '<div class="carousel-inner">';
+   $carousel .= '<div class="carousel-inner" style="z-index:-1;">';
    foreach ($images as $i => $image) {
       if ($i == 0) {
          $carousel .= '<div class="carousel-item active">';
