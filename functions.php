@@ -309,7 +309,7 @@ function hvitur_galleries_to_carousel() {
       }
    }
 
-   $carousel = '<div class="carousel slide carousel-fade" id="carousel" data-ride="carousel>';
+   $carousel = '<div class="carousel slide carousel-fade" id="carousel" data-ride="carousel">';
 
    // image slides
    $carousel .= '<div class="carousel-inner" style="z-index:-1;">';
@@ -350,7 +350,7 @@ function hvitur_galleries_to_carousel() {
       $text = __('Edit this' , 'hvitur');
       $carousel .= '<a href="'. $url . '"
          target="_blank" class="btn btn-sm btn-outline-light"
-         style="position: absolute; top: 12px; right: 8px; z-index=100">' . $text . '</a>';
+         style="position: absolute; top: 12px; right: 8px; z-index: 100;">' . $text . '</a>';
    }
 
    $carousel .= '</div>';
