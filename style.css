@@ -38,11 +38,6 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
 }
 
-/* stretch fluid images, if they are smaller than their container */
-.img-fluid {
-  width: 100% !important;
-}
-
 /* center crop background images */
 .center-cropped {
   width: 100%;
@@ -51,9 +46,3 @@ h1, h2, h3, h4, h5, h6 {
   background-repeat: no-repeat;
   background-size: cover;
 }
-
-/*
-.carousel-indicators {
-    top: 20px; /* move indicators to the top *
-}
-*/

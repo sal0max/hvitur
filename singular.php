@@ -22,7 +22,7 @@ get_template_part('partials/container'); ?>
             <!-- thumbnail -->
             <?php if (has_post_thumbnail()): ?>
             <p>
-               <?php the_post_thumbnail('', array('class' => 'img-fluid')); ?>
+               <?php the_post_thumbnail('', array('class' => 'img-fluid d-block mx-auto')); ?>
             </p>
             <?php endif; ?>
             <!-- /thumbnail -->
