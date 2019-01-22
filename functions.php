@@ -316,7 +316,7 @@ function hvitur_galleries_to_carousel() {
    $carousel = '<div class="carousel slide carousel-fade" id="carousel" data-ride="carousel">';
 
    // image slides
-   $carousel .= '<div class="carousel-inner" role="listbox">';
+   $carousel .= '<div class="carousel-inner">';
    foreach ($images as $i => $image) {
       if ($i == 0) {
          $carousel .= '<div class="carousel-item active">';
@@ -324,9 +324,10 @@ function hvitur_galleries_to_carousel() {
       else {
          $carousel .= '<div class="carousel-item">';
       }
-      $carousel .= '<div class="center-cropped"';
-      $carousel .= 'style="min-height: calc(100vh - 3.5rem); background-image: url(\'' . $image . '\');">';
-      $carousel .= '</div>';
+      $carousel .= '<div ';
+      $carousel .= ' class="center-cropped"';
+      $carousel .= ' style="min-height: calc(100vh - 3.5rem); background-image: url(\'' . $image . '\');">';
+      $carousel .= ' </div>';
       // add hidden div for preloading the next image
       if ($i < sizeof($images)) {
          $carousel .= '<div style="position:absolute; width:0; height:0; overflow:hidden; z-index:-1; content:';
@@ -336,18 +337,6 @@ function hvitur_galleries_to_carousel() {
       $carousel .= '</div>';
    }
    $carousel .= '</div>';
-
-   // indicators
-   //   $carousel .= '<ol class="carousel-indicators">';
-   //   for ($i = 0;$i < sizeof($images);$i++) {
-   //      if ($i == 0) {
-   //         $carousel .= '<li data-target="#carousel" data-slide-to="0" class="active"></li>';
-   //      }
-   //      else {
-   //         $carousel .= '<li data-target="#carousel" data-slide-to="' . $i . '"></li>';
-   //      }
-   //   }
-   //   $carousel .= '</ol>';
 
    // controlers
    $carousel .= '<a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">';

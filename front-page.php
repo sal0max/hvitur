@@ -1,6 +1,7 @@
-<?php get_header(); ?>
-   <?php galleries_to_carousel(); // functions.php ?>
-   <?php get_footer(); ?>
-</body>
-</html>
-
+<?php
+get_header();
+// need opening div because not using
+//    get_template_part('partials/container');
+echo '<div>';
+   hvitur_galleries_to_carousel(); // functions.php
+get_footer(); ?>
