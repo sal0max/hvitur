@@ -8,7 +8,13 @@ code[class*="language-"],
 pre[class*="language-"] {
   color: #000;
   background: none;
-  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    Menlo,
+    Courier,
+    monospace;
   text-align: left;
   white-space: pre;
   word-spacing: normal;
@@ -41,7 +47,6 @@ pre[class*="language-"] {
 code[class*="language"] {
   max-height: inherit;
   height: 100%;
-  padding: 0 1em;
   display: block;
   overflow: auto;
 }

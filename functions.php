@@ -89,7 +89,8 @@ function hvitur_styles() {
    wp_enqueue_style('hvitur', get_template_directory_uri() . '/style.css');
 
    // prism.js
-   wp_enqueue_style('prism_css', get_template_directory_uri() . '/css/prism-tomorrow.css');
+   wp_enqueue_style('prism_css', get_template_directory_uri() . '/css/prism-light-gist.css');
+   //wp_enqueue_style('prism_css', get_template_directory_uri() . '/css/prism-dark-darcula.css');
    wp_enqueue_style('prism_css-linenumbers', 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.13.0/plugins/line-numbers/prism-line-numbers.min.css');
 
    // bootstrap (CDN)
