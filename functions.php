@@ -123,6 +123,17 @@ function my_css_attributes_filter($var) {
 }
 
 /**
+ * Preserve leading underscores in file names during upload
+ */
+function preserve_leading_underscore( $filename, $filename_raw ) {
+    if( "_" == substr($filename_raw, 0, 1) ) {
+        $filename = "_" . $filename;
+    }
+
+    return $filename;
+}
+
+/**
  * Remove invalid "rel" attribute values in the category list
  */
 function remove_category_rel_from_category_list($thelist) {
@@ -504,6 +515,8 @@ remove_action('wp_head', 'wp_generator'); // display the xhtml generator that is
 remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
 
 // Filters
+add_filter('sanitize_file_name', 'preserve_leading_underscore', 10, 2); // don't strip leading underscores of uploaded files names
+add_filter('wp_feed_cache_transient_lifetime', create_function('', 'return 7200;')); // 2h rss feed refresh time
 add_filter('avatar_defaults', 'hvitur_gravatar'); // custom gravatar in settings > discussion
 add_filter('body_class', 'add_slug_to_body_class'); // add slug to body class (starkers build)
 add_filter('edit_post_link', 'my_edit_post_link', 10, 3);
