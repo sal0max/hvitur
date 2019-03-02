@@ -13,7 +13,7 @@
 /*
  * links
  */
-main a {
+main a:not([class^="h"]) {
   font-weight: 390;
   text-decoration: underline; }
 

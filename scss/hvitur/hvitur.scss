@@ -38,6 +38,8 @@ $display1-weight:      $font-weight-normal;
 $display2-weight:      $font-weight-normal;
 $display3-weight:      $font-weight-normal;
 $display4-weight:      $font-weight-normal;
+//$headings-font-family: Georgia,Times,Times New Roman,serif;
+//$headings-font-family: Garamond,Baskerville,Baskerville Old Face,Hoefler Text,Times New Roman,serif;
 
 /*
  * load function references
@@ -55,7 +57,7 @@ $kbd-bg: $code-color;
  */
 $link-color:        $body-color;
 $link-hover-color:  lighten($link-color, 35%);
-main a {
+main a:not([class^="h"]) {
    font-weight:     $font-weight-normal * 1.3;
    text-decoration: underline;
 }

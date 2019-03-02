@@ -1,4 +1,4 @@
-main a{font-weight:390;text-decoration:underline}/*!
+main a:not([class^="h"]){font-weight:390;text-decoration:underline}/*!
  * Bootstrap v4.1.3 (https://getbootstrap.com/)
  * Copyright 2011-2018 The Bootstrap Authors
  * Copyright 2011-2018 Twitter, Inc.
