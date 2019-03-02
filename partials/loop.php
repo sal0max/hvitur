@@ -5,7 +5,7 @@
 <?php if (have_posts()): ?>
 
    <?php while (have_posts()) : the_post(); ?>
-      <article class="mb-4" id="post-<?php the_ID(); ?>">
+      <article class="mb-5" id="post-<?php the_ID(); ?>">
 
          <div>
             <!-- date -->
