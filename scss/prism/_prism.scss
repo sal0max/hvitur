@@ -1,0 +1,155 @@
+/**
+ * 
+ */
+
+$color-background: none !default;
+$color-text:       null !default;
+$color-border:     null !default;
+
+$color1: null !default;
+$color2: null !default;
+$color3: null !default;
+$color4: null !default;
+$color5: null !default;
+$color6: null !default;
+$color7: null !default;
+
+$background1: null !default;
+$background2: null !default;
+$background3: null !default;
+$background4: null !default;
+$background5: null !default;
+$background6: null !default;
+$background7: null !default;
+
+$tab-size:  3           !default;
+$font-size: null        !default;
+$border-radius: 0.25rem !default;
+
+/*
+ * general settings
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+   // tabs
+   -moz-tab-size:   $tab-size;
+   -o-tab-size:     $tab-size;
+   tab-size:        $tab-size;
+
+   // whitespace management
+   -webkit-hyphens: none;
+   -moz-hyphens:    none;
+   -ms-hyphens:     none;
+   hyphens:         none;
+   white-space:     pre;
+   word-break:      normal;
+   word-wrap:       normal;
+   
+   // text style
+   font-family:     "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+   font-size:       $font-size;
+   text-align:      left;
+   line-height:     1.5;
+
+   // colors
+   color:           $color-text;
+   background:      $color-background;
+}
+
+pre[class*="language-"] {
+   padding:         .75rem 1.25rem;
+   background:      $color-background;
+   border:          1px solid $color-border;
+   border-radius:   $border-radius;
+}
+
+:not(pre) > code[class*="language-"] {
+    /* stub */
+}
+
+/*
+ * syntax highlighting
+ */
+
+.namespace {
+   opacity: .7;
+}
+.token {
+   &.attr-value,
+   &.boolean,
+   &.constant,
+   &.deleted,
+   &.function-name,
+   &.keyword,
+   &.number,
+   &.property,
+   &.string,
+   &.symbol {
+      color:      $color1;
+      background: $background1;
+   }
+   
+   &.attr-name,
+   &.builtin,
+   &.char,
+   &.class-name,
+   &.function,
+   &.inserted,
+   &.selector {
+      color:      $color2;
+      background: $background2;
+   }
+   
+   &.block-comment,
+   &.cdata,
+   &.comment,
+   &.doctype,
+   &.prolog,
+   &.punctuation {
+      color:      $color3;
+      background: $background3;
+   }
+   
+   .language-css &.string,
+   .style &.string,
+   &.entity,
+   &.operator,
+   &.url,
+   &.variable {
+      color:      $color4;
+      background: $background4;
+   }
+   
+   &.regex,
+   &.important {
+      color:      $color5;
+      background: $background5;
+   }
+   
+   &.atrule {
+      color:      $color6;
+      background: $background6;
+   }
+   
+   &.tag {
+      color:      $color7;
+      background: $background7;
+   }
+   
+   &.important {
+      font-weight: normal;
+   }
+   
+   &.bold {
+      font-weight: bold;
+   }
+   
+   &.italic {
+      font-style: italic;
+   }
+   
+   &.entity {
+      cursor: help;
+   }
+}

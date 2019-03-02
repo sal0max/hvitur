@@ -79,14 +79,14 @@ function hvitur_header_scripts() {
  * Load hvitur styles (style.css & bootstrap)
  */
 function hvitur_styles() {
-   wp_enqueue_style('hvitur', get_template_directory_uri() . '/style.css');
+   wp_enqueue_style('hvitur',                            get_template_directory_uri() . '/style.css');
    // prism.js
-   wp_enqueue_style('prism_css',                         get_template_directory_uri() . '/css/prism-light-gist.css'); // /css/prism-dark-darcula.css
+   wp_enqueue_style('prism_css',                         get_template_directory_uri() . '/css/hvitur-prism-light.min.css');
    wp_enqueue_style('prism_css-linenumbers',            'https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/plugins/line-numbers/prism-line-numbers.min.css');
    wp_enqueue_style('prism_css-autolinker',             'https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/plugins/autolinker/prism-autolinker.min.css');
    // bootstrap
-   wp_enqueue_style('bootstrap_css',                    'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css');
-   // fontawesome (CDN) - alredy imported by plugin: "Better Font Awesome"
+   wp_enqueue_style('bootstrap_css',                     get_template_directory_uri() . '/css/hvitur.min.css');
+   // fontawesome - alredy imported by plugin: "Better Font Awesome"
    //wp_enqueue_style('fontawesome',                      'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 }
 
@@ -516,10 +516,10 @@ remove_filter('the_content',                     'wpautop');                    
 remove_filter('the_excerpt',                     'wpautop');                                // disable automatic <p> tags in the excerpt
 
 // shortcodes
-add_shortcode('email',      'shortcode_hide_email');
-add_shortcode('email2',     'shortcode_hide_email2');
-add_shortcode('yearsSince', 'shortcode_whats_my_age_again');
-add_shortcode('code',       'shortcode_codeblock');
+add_shortcode('email',                           'shortcode_hide_email');
+add_shortcode('email2',                          'shortcode_hide_email2');
+add_shortcode('yearsSince',                      'shortcode_whats_my_age_again');
+add_shortcode('code',                            'shortcode_codeblock');
 
 // register custom navigation walkers
 require_once ('functions/bs4navwalker.php');

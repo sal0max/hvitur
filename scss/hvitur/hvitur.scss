@@ -1,0 +1,66 @@
+/*
+ * hvitur main colors
+ */
+$blue:      #0D47A1;
+$red:       #D50000;
+$yellow:    #FFEB3B;
+$green:     #81C784;
+$cyan:      #00E5FF;
+// ---
+$pink:      #F50057;
+$indigo:    #536DFE;
+$purple:    #AB47BC;
+$orange:    #FF9100;
+$teal:      #4DB6AC;
+// ---
+$gray-100:  #F5F5F5;
+$gray-200:  #EEEEEE;
+$gray-300:  #E0E0E0;
+$gray-400:  #BDBDBD;
+$gray-500:  #9E9E9E;
+$gray-600:  #757575;
+$gray-700:  #616161;
+$gray-800:  #424242;
+$gray-900:  #212121;
+// ---
+$primary:   $gray-700;
+$secondary: $gray-400;
+
+/*
+ * make font weight lighter
+ */
+$lead-font-weight:     100;
+$font-weight-light:    100;
+$font-weight-normal:   300;
+$font-weight-bold:     500;
+$headings-font-weight: $font-weight-normal;
+$display1-weight:      $font-weight-normal;
+$display2-weight:      $font-weight-normal;
+$display3-weight:      $font-weight-normal;
+$display4-weight:      $font-weight-normal;
+
+/*
+ * load function references
+ */
+@import "bootstrap/functions";
+@import "bootstrap/variables";
+
+/*
+ * more colors
+ */
+$kbd-bg: $code-color;
+
+/*
+ * links
+ */
+$link-color:        $body-color;
+$link-hover-color:  lighten($link-color, 35%);
+main a {
+   font-weight:     $font-weight-normal * 1.3;
+   text-decoration: underline;
+}
+
+/*
+ * finish
+ */
+@import "bootstrap/bootstrap";
