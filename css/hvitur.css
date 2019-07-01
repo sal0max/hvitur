@@ -7,13 +7,19 @@
 /*
  * load function references
  */
+figure {
+  padding: 0.5rem 0 0.25rem; }
+
 /*
- * more colors
+ * <kbd>
  */
+kbd {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important; }
+
 /*
  * links
  */
-main a:not([class^="h"]) {
+main a:not([class^="h"]):not([class^="leaflet"]) {
   font-weight: 390;
   text-decoration: underline; }
 
@@ -95,7 +101,7 @@ hr {
 
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
-  margin-bottom: 0.5rem; }
+  margin-bottom: 0; }
 
 p {
   margin-top: 0;
@@ -321,10 +327,10 @@ template {
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0;
   font-family: inherit;
   font-weight: 300;
-  line-height: 1.2;
+  line-height: 1.5;
   color: inherit; }
 
 h1, .h1 {
@@ -352,22 +358,22 @@ h6, .h6 {
 .display-1 {
   font-size: 6rem;
   font-weight: 300;
-  line-height: 1.2; }
+  line-height: 1.5; }
 
 .display-2 {
   font-size: 5.5rem;
   font-weight: 300;
-  line-height: 1.2; }
+  line-height: 1.5; }
 
 .display-3 {
   font-size: 4.5rem;
   font-weight: 300;
-  line-height: 1.2; }
+  line-height: 1.5; }
 
 .display-4 {
   font-size: 3.5rem;
   font-weight: 300;
-  line-height: 1.2; }
+  line-height: 1.5; }
 
 hr {
   margin-top: 1rem;

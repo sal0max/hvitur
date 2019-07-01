@@ -9,7 +9,11 @@
   External modules/files
 \*------------------------------------*/
 
-// Load any external files you have here
+require_once (__DIR__ . '/functions/bs4navwalker.php');
+require_once (__DIR__ . '/functions/carousel.php');
+require_once (__DIR__ . '/functions/excerpts.php');
+require_once (__DIR__ . '/functions/inlinelistwalker.php');
+require_once (__DIR__ . '/functions/shortcodes.php');
 
 /*------------------------------------*\
   Make localizable
@@ -60,16 +64,16 @@ if (function_exists('add_theme_support')) {
 function hvitur_header_scripts() {
    if ($GLOBALS['pagenow'] != 'wp-login.php' && !is_admin()) {
       // bootstrap
-      wp_enqueue_script('jQuery_js',                    'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.js');
-      wp_enqueue_script('pooper_js',                    'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js');
-      wp_enqueue_script('bootstrap_js',                 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js');
+      wp_enqueue_script('jQuery_js',                    'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.js');
+      wp_enqueue_script('pooper_js',                    'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js');
+      wp_enqueue_script('bootstrap_js',                 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js');
       // prism.js
-      wp_enqueue_script('prism_js',                     'https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js');
-      wp_enqueue_script('prism_js-java',                'https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-java.min.js');
-      wp_enqueue_script('prism_js-bash',                'https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-bash.min.js');
-      wp_enqueue_script('prism_js-linenumbers',         'https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/plugins/line-numbers/prism-line-numbers.min.js');
-      wp_enqueue_script('prism_js-autolinker',          'https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/plugins/autolinker/prism_js-autolinker.min.js');
-      wp_enqueue_script('prismJS-normalize-whitespace', 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/plugins/normalize-whitespace/prism-normalize-whitespace.min.js');
+      wp_enqueue_script('prism_js',                     'https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/prism.min.js');
+      wp_enqueue_script('prism_js-json',                'https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/components/prism-json.min.js');
+      wp_enqueue_script('prism_js-bash',                'https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/components/prism-bash.min.js');
+      wp_enqueue_script('prism_js-linenumbers',         'https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/plugins/line-numbers/prism-line-numbers.min.js');
+      wp_enqueue_script('prism_js-autolinker',          'https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/plugins/autolinker/prism-autolinker.js');
+      wp_enqueue_script('prismJS-normalize-whitespace', 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/plugins/normalize-whitespace/prism-normalize-whitespace.min.js');
       // custom scripts
       wp_enqueue_script('hvitur_scripts',                get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0.0');
    }
@@ -79,15 +83,15 @@ function hvitur_header_scripts() {
  * Load hvitur styles (style.css & bootstrap)
  */
 function hvitur_styles() {
-   wp_enqueue_style('hvitur',                            get_template_directory_uri() . '/style.css');
+   wp_enqueue_style('hvitur',                 get_template_directory_uri() . '/style.css');
    // prism.js
-   wp_enqueue_style('prism_css',                         get_template_directory_uri() . '/css/hvitur-prism-light.min.css');
-   wp_enqueue_style('prism_css-linenumbers',            'https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/plugins/line-numbers/prism-line-numbers.min.css');
-   wp_enqueue_style('prism_css-autolinker',             'https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/plugins/autolinker/prism-autolinker.min.css');
+   wp_enqueue_style('prism_css',              get_template_directory_uri() . '/css/hvitur-prism-dark.min.css');
+   wp_enqueue_style('prism_css-linenumbers', 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/plugins/line-numbers/prism-line-numbers.min.css');
+   wp_enqueue_style('prism_css-autolinker',  'https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/plugins/autolinker/prism-autolinker.css');
    // bootstrap
-   wp_enqueue_style('bootstrap_css',                     get_template_directory_uri() . '/css/hvitur.min.css');
+   wp_enqueue_style('bootstrap_css',          get_template_directory_uri() . '/css/hvitur.min.css');
    // fontawesome - alredy imported by plugin: "Better Font Awesome"
-   //wp_enqueue_style('fontawesome',                      'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+   //wp_enqueue_style('fontawesome',         'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 }
 
 /**
@@ -112,7 +116,7 @@ function my_wp_nav_menu_args($args = '') {
 /**
  * Preserve leading underscores in file names during upload
  */
-function preserve_leading_underscore( $filename, $filename_raw ) {
+function preserve_leading_underscore($filename, $filename_raw) {
     if( "_" == substr($filename_raw, 0, 1) ) {
         $filename = "_" . $filename;
     }
@@ -139,7 +143,7 @@ function remove_recent_comments_css() {
 }
 
 /**
- * Pagination for paged posts, page 1, page 2, page 3, with next and previous links (no plugin!)
+ * Pagination for paged posts, page 1, page 2, page 3, with next and previous links
  */
 function hvitur_pagination() {
    global $wp_query;
@@ -150,33 +154,6 @@ function hvitur_pagination() {
       'current' => max(1, get_query_var('paged')) ,
       'total' => $wp_query->max_num_pages
    ));
-}
-
-/**
- * Changing excerpt length
- */
-function overwrite_excerpt_length($length) {
-   return 50;
-}
-
-/**
- * Changing text "more" of generated excerpts
- */
-function overwrite_excerpt_more($more) {
-   return "&hellip;";
-}
-
-/**
- * Add text "more" to all excerpts (generated and custom ones)
- */
-function overwrite_the_excerpt( $excerpt ){
-   $post = get_post();
-   $excerpt .= sprintf(
-      '<span class="font-weight-light"><br><a href="%1$s">%2$s &#8594;</a></span>',
-      get_the_permalink(),
-      __('Read More', 'hvitur')
-   );
-   return $excerpt;
 }
 
 /**
@@ -267,79 +244,10 @@ function enable_threaded_comments() {
 }
 
 /**
- * Gets all images of all galleries and puts them together in one single bootstrap (v4) carousel
- */
-function hvitur_galleries_to_carousel() {
-   global $post;
-
-   // only do this on singular items
-   if (!is_singular()) return;
-   // make sure the post has a gallery in it
-   if (!has_shortcode($post->post_content, 'gallery')) return;
-
-   // retrieve all galleries of this post and flatten them
-   $galleries = get_post_galleries_images($post);
-   $images = array();
-   foreach ($galleries as $gallery) {
-      foreach ($gallery as $image) {
-         $images[] = $image;
-      }
-   }
-
-   $carousel = '<div class="carousel slide carousel-fade" id="carousel" data-ride="carousel">';
-
-   // image slides
-   $carousel .= '<div class="carousel-inner" style="z-index:-1;">';
-   foreach ($images as $i => $image) {
-      if ($i == 0) {
-         $carousel .= '<div class="carousel-item active">';
-      }
-      else {
-         $carousel .= '<div class="carousel-item">';
-      }
-      $carousel .= '<div ';
-      $carousel .= ' class="center-cropped"';
-      $carousel .= ' style="min-height: calc(100vh - 3.5rem); background-image: url(\'' . $image . '\');">';
-      $carousel .= ' </div>';
-      // add hidden div for preloading the next image
-      if ($i < sizeof($images)) {
-         $carousel .= '<div style="position:absolute; width:0; height:0; overflow:hidden; z-index:-1; content:';
-         $carousel .= 'url(\'' . $images[$i + 1] . '\');"></div>';
-      }
-
-      $carousel .= '</div>';
-   }
-   $carousel .= '</div>';
-
-   // controlers
-   $carousel .= '<a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">';
-   $carousel .= '<span class="carousel-control-prev-icon" aria-hidden="true"></span>';
-   $carousel .= '<span class="sr-only">Previous</span>';
-   $carousel .= '</a>';
-   $carousel .= '<a class="carousel-control-next" href="#carousel" role="button" data-slide="next">';
-   $carousel .= '<span class="carousel-control-next-icon" aria-hidden="true"></span>';
-   $carousel .= '<span class="sr-only">Next</span>';
-   $carousel .= '</a>';
-
-   // edit button
-   if (get_edit_post_link()) {
-      $url = get_edit_post_link($post_id);
-      $text = __('Edit this' , 'hvitur');
-      $carousel .= '<a href="'. $url . '"
-         target="_blank" class="btn btn-sm btn-outline-light"
-         style="position: absolute; top: 12px; right: 8px; z-index: 100;">' . $text . '</a>';
-   }
-
-   $carousel .= '</div>';
-
-   echo $carousel;
-}
-
-/**
  * Default edit post link:
  * Open in new page and display in red. Also provides translation.
  */
-function my_edit_post_link($link, $post_id, $text) {
+function hvitur_edit_post_link($link, $post_id, $text) {
    $url = get_edit_post_link($post_id);
    $text = __('Edit this' , 'hvitur');
    return '<a href="' . $url . '" target="_blank" class="text-danger">' . $text . '</a>';
@@ -400,85 +308,16 @@ function hvitur_comments($comment, $args, $depth) {
 }
 
 /*------------------------------------*\
-  custom shortcodes
-\*------------------------------------*/
-
-/**
- * Hide email from Spam Bots using a shortcode.
- *
- * @param array  $atts    Shortcode attributes. Not used.
- * @param string $content The shortcode content. Should be an email address.
- *
- * @return string The obfuscated email address.
- */
-function shortcode_hide_email($atts, $content = null) {
-   if (!is_email($content)) {
-      return;
-   }
-   return '<a href="mailto:' . antispambot($content) . '">' . antispambot($content) . '</a>';
-}
-
-/**
- * Hide email from Spam Bots using a shortcode.
- *
- * @param array  $atts    Shortcode attributes. Not used.
- * @param string $content The shortcode content. Should be an email address.
- *
- * @return string The obfuscated email address.
- */
-function shortcode_hide_email2($atts, $content = null) {
-   if (!is_email($content)) {
-      return;
-   }
-   return '<a href="mailto:' . antispambot($content) . '">Email</a>';
-}
-
-/**
- * Calculates the current age, given a birthdate.
- * Could also be used for anniversaries or any other recurring events.
- *
- * @param string $birthday The date, formatted as dd.MM.yyyy. e.g. 28.12.1969
- *
- * @return string The years since the given date to now as a whole number.
- */
-function shortcode_whats_my_age_again($birthday) {
-   extract(shortcode_atts(array(
-      'birthday' => 'birthday'
-   ) , $birthday));
-   $birthday = date("Ymd", strtotime($birthday));
-   $diff = date("Ymd") - $birthday;
-   return substr($diff, 0, -4);
-}
-
-/**
- * Creates a preformatted code block with syntax highlighting. Uses prism.js.
- *
- * @param string $lang the programming language used for syntax highlighting. e.g. java
- *
- * @return string the code block
- */
-function shortcode_codeblock($lang, $content = null) {
-   extract(shortcode_atts(array(
-      'lang' => ''
-   ) , $lang));
-   return '<pre class="normalize-whitespace">'
-       . '<code class="lang-'. $lang . '">'
-       . $content
-       . '</code>'
-       . '</pre>';
-}
-
-/*------------------------------------*\
   Actions + Filters + ShortCodes
 \*------------------------------------*/
 
 // actions
 add_action   ('get_header',                      'enable_threaded_comments');               // enable threaded comments
-add_action   ('init',                            'hvitur_galleries_to_carousel');
+add_action   ('init',                            'hvitur_galleries_to_carousel');           // functions/carousel.php
 add_action   ('init',                            'hvitur_header_scripts');                  // add custom scripts to wp_head
 add_action   ('init',                            'hvitur_pagination');                      // add our hvitur pagination
 add_action   ('init',                            'register_hvitur_menu');                   // add hvitur menu
-add_action   ('widgets_init',                    'remove_recent_comments_css');        // remove inline "recent comment" styles from wp_head()
+add_action   ('widgets_init',                    'remove_recent_comments_css');             // remove inline "recent comment" styles from wp_head()
 add_action   ('wp_enqueue_scripts',              'hvitur_styles');                          // add (theme) stylesheet
 remove_action('wp_head',                         'adjacent_posts_rel_link', 10, 0);         // display relational links for the posts adjacent to the current post.
 remove_action('wp_head',                         'adjacent_posts_rel_link_wp_head', 10, 0);
@@ -494,7 +333,7 @@ remove_action('wp_head',                         'wp_generator');               
 remove_action('wp_head',                         'wp_shortlink_wp_head', 10, 0);
 
 // filters
-add_filter   ('edit_post_link',                  'my_edit_post_link', 10, 3);
+add_filter   ('edit_post_link',                  'hvitur_edit_post_link', 10, 3);
 add_filter   ('excerpt_length',                  'overwrite_excerpt_length');
 add_filter   ('excerpt_more',                    'overwrite_excerpt_more');
 add_filter   ('image_send_to_editor',            'remove_thumbnail_dimensions', 10);        // remove width and height dynamic attributes to post images
@@ -516,14 +355,11 @@ remove_filter('the_content',                     'wpautop');                    
 remove_filter('the_excerpt',                     'wpautop');                                // disable automatic <p> tags in the excerpt
 
 // shortcodes
-add_shortcode('email',                           'shortcode_hide_email');
-add_shortcode('email2',                          'shortcode_hide_email2');
-add_shortcode('yearsSince',                      'shortcode_whats_my_age_again');
-add_shortcode('code',                            'shortcode_codeblock');
-
-// register custom navigation walkers
-require_once ('functions/bs4navwalker.php');
-require_once ('functions/inlinelistwalker.php');
+add_shortcode('email',                           'shortcode_hide_email');                   // functions/shortcodes.php
+add_shortcode('email2',                          'shortcode_hide_email2');                  // functions/shortcodes.php
+add_shortcode('yearsSince',                      'shortcode_whats_my_age_again');           // functions/shortcodes.php
+add_shortcode('code',                            'shortcode_codeblock');                    // functions/shortcodes.php
+add_shortcode('kbd',                             'shortcode_kbd');                          // functions/shortcodes.php
 
 // if dynamic sidebar exists
 if (function_exists('register_sidebar')) {

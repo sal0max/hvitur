@@ -40,6 +40,8 @@ $display3-weight:      $font-weight-normal;
 $display4-weight:      $font-weight-normal;
 //$headings-font-family: Georgia,Times,Times New Roman,serif;
 //$headings-font-family: Garamond,Baskerville,Baskerville Old Face,Hoefler Text,Times New Roman,serif;
+$headings-line-height: 1.5;
+$headings-margin-bottom: 0;
 
 /*
  * load function references
@@ -47,17 +49,25 @@ $display4-weight:      $font-weight-normal;
 @import "bootstrap/functions";
 @import "bootstrap/variables";
 
+
+figure {
+  padding: 0.5rem 0 0.25rem;
+}
+
 /*
- * more colors
+ * <kbd>
  */
 $kbd-bg: $code-color;
+kbd {
+   font-family: $font-family-base !important;
+}
 
 /*
  * links
  */
 $link-color:        $body-color;
 $link-hover-color:  lighten($link-color, 35%);
-main a:not([class^="h"]) {
+main a:not([class^="h"]):not([class^="leaflet"]) {
    font-weight:     $font-weight-normal * 1.3;
    text-decoration: underline;
 }
