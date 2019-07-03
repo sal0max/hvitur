@@ -352,6 +352,7 @@ add_filter   ('wp_link_pages_args',              'hvitur_add_next_and_number');
 add_filter   ('wp_link_pages_link',              'hvitur_link_pages_link', 10, 2);
 add_filter   ('wp_nav_menu_args',                'my_wp_nav_menu_args');                    // remove surrounding <div> from wp navigation
 add_filter   ('wp_nav_menu_items',               'do_shortcode');                           // allow shortcodes in menus
+add_filter   ('xmlrpc_enabled',                  '__return_false');                         // disable XMLRPC
 remove_filter('the_content',                     'wpautop');                                // disable automatic <p> tags in excerpt pages
 remove_filter('the_excerpt',                     'wpautop');                                // disable automatic <p> tags in the excerpt
 
