@@ -22,7 +22,15 @@ pre[class*="language-"] {
   font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
   text-align: left;
   line-height: 1.5;
+  color: !important;
   background: none; }
+  code[class*="language-"] a,
+  pre[class*="language-"] a {
+    color: #183691 !important;
+    opacity: 0.75; }
+  code[class*="language-"] a:hover,
+  pre[class*="language-"] a:hover {
+    opacity: 1.0; }
 
 pre[class*="language-"] {
   padding: .75rem 1.25rem;

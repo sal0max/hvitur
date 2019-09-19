@@ -32,6 +32,15 @@ $border-radius: 0.25rem !default;
 
 code[class*="language-"],
 pre[class*="language-"] {
+   // links
+   a {
+      color:        $color1 !important;
+      opacity:      0.75;
+   }
+   a:hover {
+      opacity:      1.0;
+   }
+
    // tabs
    -moz-tab-size:   $tab-size;
    -o-tab-size:     $tab-size;
@@ -53,7 +62,7 @@ pre[class*="language-"] {
    line-height:     1.5;
 
    // colors
-   color:           $color-text;
+   color:           $color-text !important;
    background:      $color-background;
 }
 
