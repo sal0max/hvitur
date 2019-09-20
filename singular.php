@@ -36,11 +36,11 @@ get_template_part('partials/container'); ?>
                </small>
                <!-- /date -->
                <!-- category -->
-               <?php if (has_category()): ?>
+               <!-- <?php if (has_category()): ?>
                <small>
                   &emsp;&middot;&emsp;<?php the_category(', '); ?>
                </small>
-               <?php endif; ?>
+               <?php endif; ?> -->
                <!-- category -->
             </p>
             <?php endif; ?>
