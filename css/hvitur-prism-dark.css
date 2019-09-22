@@ -58,7 +58,7 @@ pre[class*="language-"] {
 
 .language-css .token.string,
 .style .token.string, .token.entity, .token.operator, .token.url, .token.variable {
-  color: #484a4a; }
+  color: #a8aaaa; }
 
 .token.regex, .token.important {
   color: #cc7832;
