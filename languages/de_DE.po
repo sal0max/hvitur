@@ -1,31 +1,31 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2018-07-29 14:32+0200\n"
-"PO-Revision-Date: 2018-07-29 14:32+0200\n"
+"POT-Creation-Date: 2019-10-27 17:02+0100\n"
+"PO-Revision-Date: 2019-10-27 17:04+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.2.4\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: 404.php:14
+#: 404.php:13
 msgid "Page not found"
 msgstr "Seite nicht gefunden"
 
-#: 404.php:17
+#: 404.php:16
 msgid "Go home"
 msgstr "Zurück zur Startseite"
 
 #: _todo/author.php:36
 msgid "Leave your thoughts"
-msgstr ""
+msgstr "Kommentieren"
 
 #: _todo/author.php:36
 msgid "1 Comment"
@@ -40,58 +40,52 @@ msgstr "% Kommentare"
 msgid "%s Search Results for "
 msgstr "%s Suchergebnisse für "
 
-#: functions.php:195
-#| msgid "read more"
-msgid "Read More"
-msgstr "Weiterlesen"
+#: functions.php:252 functions/carousel.php:61
+msgid "Edit this"
+msgstr "Bearbeiten"
 
-#: functions.php:437
+#: functions.php:280
 #, php-format
 msgid "<cite class=\"fn\">%s</cite> <span class=\"says\">says:</span>"
 msgstr "<cite class=„fn“>%s</cite> <span class=„says“>sagt:</span>"
 
-#: functions.php:447
+#: functions.php:290
 #, php-format
 msgid "%1$s at %2$s"
 msgstr "%1$s um %2$s"
 
-#: functions.php:447
+#: functions.php:290
 msgid "(Edit)"
 msgstr "(Bearbeiten)"
 
-#: functions.php:526
+#: functions.php:370
 msgid "Widget Area 1"
 msgstr ""
 
-#: functions.php:527 functions.php:538
+#: functions.php:371 functions.php:382
 msgid "Description for this widget-area..."
 msgstr ""
 
-#: functions.php:537
+#: functions.php:381
 msgid "Widget Area 2"
 msgstr ""
 
-#: header.php:59
+#: functions/excerpts.php:25
+msgid "Read More"
+msgstr "Weiterlesen"
+
+#: header.php:58
 msgid "Admin Area"
 msgstr "Admin-Bereich"
 
-#: index.php:8
-#, php-format
-msgid "Everything about %s"
-msgstr ""
-
-#: partials/loop.php:37 singular.php:63
-msgid "Edit this"
-msgstr "Bearbeiten"
-
-#: partials/loop.php:50
+#: partials/loop.php:34
 msgid "Sorry, nothing to display."
 msgstr "Sorry, nichts vorhanden."
 
-#: singular.php:71
+#: singular.php:74
 msgid "Next"
 msgstr "Weiter"
 
-#: singular.php:72
+#: singular.php:75
 msgid "Previous"
 msgstr "Zurück"
