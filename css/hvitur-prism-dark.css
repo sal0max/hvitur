@@ -56,8 +56,7 @@ pre[class*="language-"] {
 .token.block-comment, .token.cdata, .token.comment, .token.doctype, .token.prolog, .token.punctuation {
   color: #808080; }
 
-.language-css .token.string,
-.style .token.string, .token.entity, .token.operator, .token.url, .token.variable {
+.language-css .token.string, .style .token.string, .token.entity, .token.operator, .token.url, .token.variable {
   color: #a8aaaa; }
 
 .token.regex, .token.important {
