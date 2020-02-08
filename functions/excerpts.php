@@ -1,20 +1,6 @@
 <?php
 
 /**
- * Changing excerpt length
- */
-function overwrite_excerpt_length($length) {
-   return 50;
-}
-
-/**
- * Changing text "more" of generated excerpts
- */
-function overwrite_excerpt_more($more) {
-   return "&hellip;";
-}
-
-/**
  * Add text "more" to all excerpts (generated and custom ones)
  */
 function overwrite_the_excerpt($excerpt){

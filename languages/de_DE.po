@@ -78,7 +78,11 @@ msgstr "Weiterlesen"
 msgid "Admin Area"
 msgstr "Admin-Bereich"
 
-#: partials/loop.php:34
+#: partials/loop.php:37 singular.php:63
+msgid "Edit this"
+msgstr "Bearbeiten"
+
+#: partials/loop.php:50
 msgid "Sorry, nothing to display."
 msgstr "Sorry, nichts vorhanden."
 

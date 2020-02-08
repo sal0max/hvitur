@@ -13,7 +13,7 @@ require_once (__DIR__ . '/functions/bs4navwalker.php');
 require_once (__DIR__ . '/functions/carousel.php');
 require_once (__DIR__ . '/functions/excerpts.php');
 require_once (__DIR__ . '/functions/inlinelistwalker.php');
-require_once (__DIR__ . '/functions/shortcodes.php');
+require_once (__DIR__ . '/functions/portfolio-posttype.php'); // test
 
 /*------------------------------------*\
   Make localizable
@@ -37,9 +37,6 @@ if (!isset($content_width)) {
 if (function_exists('add_theme_support')) {
    // add thumbnail support
    add_theme_support('post-thumbnails');
-   add_image_size('small',  150, '', true); // small thumbnail
-   add_image_size('medium', 300, '', true); // medium thumbnail
-   add_image_size('large',  600, '', true); // large thumbnail
 
    // enable post and comment RSS feed links to head
    add_theme_support('automatic-feed-links');
@@ -66,7 +63,7 @@ function hvitur_header_scripts() {
       // bootstrap
       wp_enqueue_script('jQuery_js',                    'https://unpkg.com/jquery@3.4.1/dist/jquery.slim.min.js');
       wp_enqueue_script('pooper_js',                    'https://unpkg.com/popper.js@1.16.0/dist/umd/popper.min.js');
-      wp_enqueue_script('bootstrap_js',                 'https://unpkg.com/bootstrap@4.3.1/dist/js/bootstrap.min.js');
+      wp_enqueue_script('bootstrap_js',                 'https://unpkg.com/bootstrap@4.4.1/dist/js/bootstrap.min.js');
       // prism.js
       wp_enqueue_script('prism_js',                     'https://unpkg.com/prismjs@1.17.1/prism.js');
       wp_enqueue_script('prism_js-json',                'https://unpkg.com/prismjs@1.17.1/components/prism-json.min.js');
@@ -91,7 +88,7 @@ function hvitur_styles() {
    // bootstrap
    wp_enqueue_style('bootstrap_css',          get_template_directory_uri() . '/css/hvitur.min.css');
    // fontawesome - alredy imported by plugin: "Better Font Awesome"
-   //wp_enqueue_style('fontawesome',         'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+   //wp_enqueue_style('fontawesome',         'https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css');
 }
 
 /**
@@ -111,17 +108,6 @@ function register_hvitur_menu() {
 function my_wp_nav_menu_args($args = '') {
    $args['container'] = false;
    return $args;
-}
-
-/**
- * Preserve leading underscores in file names during upload
- */
-function preserve_leading_underscore($filename, $filename_raw) {
-    if( "_" == substr($filename_raw, 0, 1) ) {
-        $filename = "_" . $filename;
-    }
-
-    return $filename;
 }
 
 /**
@@ -157,25 +143,10 @@ function hvitur_pagination() {
 }
 
 /**
- * Remove admin bar
- */
-function overwrite_show_admin_bar() {
-   return false;
-}
-
-/**
  * Remove type="text/css" from enqueued stylesheets -> not necessary
  */
 function hvitur_remove_textcss($tag) {
    return preg_replace('~\s+type=["\'][^"\']++["\']~', '', $tag);
-}
-
-/**
- * Remove thumbnail width and height dimensions that prevent fluid images in the_thumbnail
- */
-function remove_thumbnail_dimensions($html) {
-   $html = preg_replace('/(width|height)=\"\d*\"\s/', "", $html);
-   return $html;
 }
 
 /**
@@ -312,6 +283,7 @@ function hvitur_comments($comment, $args, $depth) {
 \*------------------------------------*/
 
 // actions
+add_action( 'init', 'custom_post_type', 0 ); // test
 add_action   ('get_header',                      'enable_threaded_comments');               // enable threaded comments
 add_action   ('init',                            'hvitur_galleries_to_carousel');           // functions/carousel.php
 add_action   ('init',                            'hvitur_header_scripts');                  // add custom scripts to wp_head
@@ -334,12 +306,6 @@ remove_action('wp_head',                         'wp_shortlink_wp_head', 10, 0);
 
 // filters
 add_filter   ('edit_post_link',                  'hvitur_edit_post_link', 10, 3);
-add_filter   ('excerpt_length',                  'overwrite_excerpt_length');
-add_filter   ('excerpt_more',                    'overwrite_excerpt_more');
-add_filter   ('image_send_to_editor',            'remove_thumbnail_dimensions', 10);        // remove width and height dynamic attributes to post images
-add_filter   ('post_thumbnail_html',             'remove_thumbnail_dimensions', 10);        // remove width and height dynamic attributes to thumbnails
-add_filter   ('sanitize_file_name',              'preserve_leading_underscore', 10, 2);     // don't strip leading underscores of uploaded files names
-add_filter   ('show_admin_bar',                  'overwrite_show_admin_bar');
 add_filter   ('style_loader_tag',                'hvitur_remove_textcss');                  // remove 'text/css' from enqueued stylesheet
 add_filter   ('the_category',                    'remove_category_rel_from_category_list'); // remove invalid rel attribute
 add_filter   ('the_excerpt',                     'do_shortcode');                           // allows shortcodes to be executed in excerpt (manual excerpts only)
@@ -347,21 +313,12 @@ add_filter   ('the_excerpt',                     'overwrite_the_excerpt');
 add_filter   ('the_excerpt',                     'shortcode_unautop');                      // disable automatic <p> tags in the excerpt (manual excerpts only)
 add_filter   ('widget_text',                     'do_shortcode');                           // allow shortcodes in dynamic sidebar
 add_filter   ('widget_text',                     'shortcode_unautop');                      // remove <p> tags in dynamic sidebars (better!)
-add_filter   ('wp_feed_cache_transient_lifetime', create_function('', 'return 7200;'));     // 2h rss feed refresh time
 add_filter   ('wp_link_pages_args',              'hvitur_add_next_and_number');
 add_filter   ('wp_link_pages_link',              'hvitur_link_pages_link', 10, 2);
 add_filter   ('wp_nav_menu_args',                'my_wp_nav_menu_args');                    // remove surrounding <div> from wp navigation
 add_filter   ('wp_nav_menu_items',               'do_shortcode');                           // allow shortcodes in menus
-add_filter   ('xmlrpc_enabled',                  '__return_false');                         // disable XMLRPC
 remove_filter('the_content',                     'wpautop');                                // disable automatic <p> tags in excerpt pages
 remove_filter('the_excerpt',                     'wpautop');                                // disable automatic <p> tags in the excerpt
-
-// shortcodes
-add_shortcode('email',                           'shortcode_hide_email');                   // functions/shortcodes.php
-add_shortcode('email2',                          'shortcode_hide_email2');                  // functions/shortcodes.php
-add_shortcode('yearsSince',                      'shortcode_whats_my_age_again');           // functions/shortcodes.php
-add_shortcode('code',                            'shortcode_codeblock');                    // functions/shortcodes.php
-add_shortcode('kbd',                             'shortcode_kbd');                          // functions/shortcodes.php
 
 // if dynamic sidebar exists
 if (function_exists('register_sidebar')) {
