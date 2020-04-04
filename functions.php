@@ -65,12 +65,12 @@ function hvitur_header_scripts() {
       wp_enqueue_script('pooper_js',                    'https://unpkg.com/popper.js@1.16.0/dist/umd/popper.min.js');
       wp_enqueue_script('bootstrap_js',                 'https://unpkg.com/bootstrap@4.4.1/dist/js/bootstrap.min.js');
       // prism.js
-      wp_enqueue_script('prism_js',                     'https://unpkg.com/prismjs@1.17.1/prism.js');
-      wp_enqueue_script('prism_js-json',                'https://unpkg.com/prismjs@1.17.1/components/prism-json.min.js');
-      wp_enqueue_script('prism_js-bash',                'https://unpkg.com/prismjs@1.17.1/components/prism-bash.min.js');
-      wp_enqueue_script('prism_js-linenumbers',         'https://unpkg.com/prismjs@1.17.1/plugins/line-numbers/prism-line-numbers.min.js');
-      wp_enqueue_script('prism_js-autolinker',          'https://unpkg.com/prismjs@1.17.1/plugins/autolinker/prism-autolinker.min.js');
-      wp_enqueue_script('prismJS-normalize-whitespace', 'https://unpkg.com/prismjs@1.17.1/plugins/normalize-whitespace/prism-normalize-whitespace.min.js');
+      wp_enqueue_script('prism_js',                     'https://unpkg.com/prismjs@1.20/prism.js');
+      wp_enqueue_script('prism_js-json',                'https://unpkg.com/prismjs@1.20/components/prism-json.min.js');
+      wp_enqueue_script('prism_js-bash',                'https://unpkg.com/prismjs@1.20/components/prism-bash.min.js');
+      wp_enqueue_script('prism_js-linenumbers',         'https://unpkg.com/prismjs@1.20/plugins/line-numbers/prism-line-numbers.min.js');
+      wp_enqueue_script('prism_js-autolinker',          'https://unpkg.com/prismjs@1.20/plugins/autolinker/prism-autolinker.min.js');
+      wp_enqueue_script('prismJS-normalize-whitespace', 'https://unpkg.com/prismjs@1.20/plugins/normalize-whitespace/prism-normalize-whitespace.min.js');
       // custom scripts
       wp_enqueue_script('hvitur_scripts',                get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0.0');
    }
@@ -83,8 +83,8 @@ function hvitur_styles() {
    wp_enqueue_style('hvitur',                 get_template_directory_uri() . '/style.css');
    // prism.js
    wp_enqueue_style('prism_css',              get_template_directory_uri() . '/css/hvitur-prism-dark.min.css');
-   wp_enqueue_style('prism_css-linenumbers', 'https://unpkg.com/prismjs@1.17.1/plugins/line-numbers/prism-line-numbers.css');
-   wp_enqueue_style('prism_css-autolinker',  'https://unpkg.com/prismjs@1.17.1/plugins/autolinker/prism-autolinker.css');
+   wp_enqueue_style('prism_css-linenumbers', 'https://unpkg.com/prismjs@1.20/plugins/line-numbers/prism-line-numbers.css');
+   wp_enqueue_style('prism_css-autolinker',  'https://unpkg.com/prismjs@1.20/plugins/autolinker/prism-autolinker.css');
    // bootstrap
    wp_enqueue_style('bootstrap_css',          get_template_directory_uri() . '/css/hvitur.min.css');
    // fontawesome - alredy imported by plugin: "Better Font Awesome"
